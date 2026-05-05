@@ -1,3 +1,6 @@
+/**
+ * @jest-environment jsdom
+ */
 import { ClickCounter } from "./ClickCounter.js";
 import { ClickCounterView } from "./ClickCounterView.js";
 import { beforeEach, describe, expect, it } from "@jest/globals";
@@ -19,5 +22,25 @@ describe("ClickCountView", () => {
       view.updateView();
       expect(updateEl.innerHTML).toBe(counterValue.toString());
     });
+  });
+
+  it("clickCounter를 주입하지 않으면 에러를 던진다.", () => {
+    const clickCounter = null;
+    const updateEl = document.createElement("span");
+    const clickCounterViewCallback = () => {
+      ClickCounterView(clickCounter, updateEl);
+    };
+
+    expect(clickCounterViewCallback).toThrow();
+  });
+
+  it("updateEl를 주입하지 않으면 에러를 던진다.", () => {
+    const clickCounter = ClickCounter();
+    const updateEl = null;
+    const clickCounterViewCallback = () => {
+      ClickCounterView(clickCounter, updateEl);
+    };
+
+    expect(clickCounterViewCallback).toThrow();
   });
 });
