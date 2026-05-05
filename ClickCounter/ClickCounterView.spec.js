@@ -20,4 +20,24 @@ describe("ClickCountView", () => {
       expect(updateEl.innerHTML).toBe(counterValue.toString());
     });
   });
+
+  it("clickCounter를 주입하지 않으면 에러를 던진다.", () => {
+    const clickCounter = null;
+    const updateEl = document.createElement("span");
+    const clickCounterViewCallback = () => {
+      ClickCounterView(clickCounter, updateEl);
+    };
+
+    expect(clickCounterViewCallback).toThrowError();
+  });
+
+  it("updateEl를 주입하지 않으면 에러를 던진다.", () => {
+    const clickCounter = ClickCounter();
+    const updateEl = null;
+    const clickCounterViewCallback = () => {
+      ClickCounterView(clickCounter, updateEl);
+    };
+
+    expect(clickCounterViewCallback).toThrowError();
+  });
 });
