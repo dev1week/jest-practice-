@@ -12,7 +12,7 @@ describe("ClickCountView 모듈의", () => {
   let view;
 
   beforeEach(() => {
-    clickCounter = ClickCounter();
+    clickCounter = ClickCounter({ value: 0 });
     updateEl = document.createElement("span");
     triggerEl = document.createElement("button");
     view = ClickCounterView(clickCounter, { updateEl, triggerEl });
@@ -55,7 +55,6 @@ describe("ClickCountView 모듈의", () => {
 
   it("clickCounter를 주입하지 않으면 에러를 던진다.", () => {
     const clickCounter = null;
-    const updateEl = document.createElement("span");
     const clickCounterViewCallback = () => {
       ClickCounterView(clickCounter, { updateEl });
     };
@@ -64,7 +63,6 @@ describe("ClickCountView 모듈의", () => {
   });
 
   it("updateEl를 주입하지 않으면 에러를 던진다.", () => {
-    const clickCounter = ClickCounter();
     const updateEl = null;
     const clickCounterViewCallback = () => {
       ClickCounterView(clickCounter, { updateEl });
