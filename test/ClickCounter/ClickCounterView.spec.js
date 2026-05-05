@@ -57,7 +57,7 @@ describe("ClickCountView 모듈의", () => {
     const clickCounter = null;
     const updateEl = document.createElement("span");
     const clickCounterViewCallback = () => {
-      ClickCounterView(clickCounter, updateEl);
+      ClickCounterView(clickCounter, { updateEl });
     };
 
     expect(clickCounterViewCallback).toThrow();
@@ -67,7 +67,7 @@ describe("ClickCountView 모듈의", () => {
     const clickCounter = ClickCounter();
     const updateEl = null;
     const clickCounterViewCallback = () => {
-      ClickCounterView(clickCounter, updateEl);
+      ClickCounterView(clickCounter, { updateEl });
     };
 
     expect(clickCounterViewCallback).toThrow();
