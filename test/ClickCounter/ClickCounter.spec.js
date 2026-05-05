@@ -16,6 +16,14 @@ describe("ClickCounter", () => {
     expect(counterCallback).toThrow();
   });
 
+  it("초기값이 설정되지 않으면 에러가 발생한다.", () => {
+    const counterCallback = () => {
+      counter = ClickCounter();
+    };
+
+    expect(counterCallback).toThrow();
+  });
+
   describe("getValue()", () => {
     it("초기값이 0인 카운터 값을 반환한다. ", () => {
       expect(counter.getValue()).toBe(0);
