@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it } from "@jest/globals";
-import { ClickCounter } from "./ClickCounter.js";
+import { ClickCounter } from "../../ClickCounter/ClickCounter.js";
 
 describe("ClickCounter", () => {
   let counter;

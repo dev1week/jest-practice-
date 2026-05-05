@@ -1,8 +1,8 @@
 /**
  * @jest-environment jsdom
  */
-import { ClickCounter } from "./ClickCounter.js";
-import { ClickCounterView } from "./ClickCounterView.js";
+import { ClickCounter } from "../../ClickCounter/ClickCounter.js";
+import { ClickCounterView } from "../../ClickCounter/ClickCounterView.js";
 import { beforeEach, describe, expect, it, jest } from "@jest/globals";
 
 describe("ClickCountView 모듈의", () => {
