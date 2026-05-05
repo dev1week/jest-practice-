@@ -5,5 +5,8 @@ export function ClickCounter() {
     getValue() {
       return count;
     },
+    increase() {
+      count++;
+    },
   };
 }
