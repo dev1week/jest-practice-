@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      var counter = 0;
+      function countDisplay() {
+        var el = document.getElementById("counter-display");
+
+        el.innerHTML = counter;
+      }
+    </script>
+  </head>
+  <body>
+    <button
+      onclick="
+        counter++;
+        countDisplay();
+      "
+    >
+      증가
+    </button>
+    <span id="counter-display"> 0 </span>
+  </body>
+</html>
