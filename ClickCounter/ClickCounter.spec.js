@@ -16,8 +16,11 @@ describe("ClickCounter", () => {
 
   describe("increase()", () => {
     it("카운터를 1 올린다.", () => {
+      const initValue = counter.getValue();
+
       counter.increase();
-      expect(counter.getValue()).toBe(1);
+
+      expect(counter.getValue()).toBe(initValue + 1);
     });
   });
 });
