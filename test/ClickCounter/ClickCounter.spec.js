@@ -5,7 +5,15 @@ describe("ClickCounter", () => {
   let counter;
 
   beforeEach(() => {
-    counter = ClickCounter();
+    counter = ClickCounter({ value: 0 });
+  });
+
+  it("초기값이 설정되지 않으면 에러가 발생한다.", () => {
+    const counterCallback = () => {
+      counter = ClickCounter();
+    };
+
+    expect(counterCallback).toThrow();
   });
 
   describe("getValue()", () => {

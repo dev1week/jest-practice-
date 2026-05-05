@@ -1,12 +1,15 @@
-export function ClickCounter() {
-  let count = 0;
+export function ClickCounter(_data) {
+  if (!_data) throw Error();
+  const data = _data;
+
+  data.value = data.value || 0;
 
   return {
     getValue() {
-      return count;
+      return data.value;
     },
     increase() {
-      count++;
+      data.value++;
     },
   };
 }
