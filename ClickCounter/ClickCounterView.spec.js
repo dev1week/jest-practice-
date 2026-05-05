@@ -1,3 +1,6 @@
+/**
+ * @jest-environment jsdom
+ */
 import { ClickCounter } from "./ClickCounter.js";
 import { ClickCounterView } from "./ClickCounterView.js";
 import { beforeEach, describe, expect, it } from "@jest/globals";
@@ -28,7 +31,7 @@ describe("ClickCountView", () => {
       ClickCounterView(clickCounter, updateEl);
     };
 
-    expect(clickCounterViewCallback).toThrowError();
+    expect(clickCounterViewCallback).toThrow();
   });
 
   it("updateEl를 주입하지 않으면 에러를 던진다.", () => {
@@ -38,6 +41,6 @@ describe("ClickCountView", () => {
       ClickCounterView(clickCounter, updateEl);
     };
 
-    expect(clickCounterViewCallback).toThrowError();
+    expect(clickCounterViewCallback).toThrow();
   });
 });
