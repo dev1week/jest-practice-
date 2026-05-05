@@ -8,12 +8,14 @@ import { beforeEach, describe, expect, it, jest } from "@jest/globals";
 describe("ClickCountView 모듈의", () => {
   let clickCounter;
   let updateEl;
+  let triggerEl;
   let view;
 
   beforeEach(() => {
     clickCounter = ClickCounter();
     updateEl = document.createElement("span");
-    view = ClickCounterView(clickCounter, updateEl);
+    triggerEl = document.createElement("button");
+    view = ClickCounterView(clickCounter, { updateEl, triggerEl });
   });
 
   describe("updateView()는", () => {
@@ -44,11 +46,18 @@ describe("ClickCountView 모듈의", () => {
     });
   });
 
+  it("클릭 이벤트가 발생하면 increaseUpdateView 를 실행한다.", () => {
+    const increaseUpdateViewSpy = jest.spyOn(view, "increaseAndUpdateView");
+    triggerEl.click();
+    expect(increaseUpdateViewSpy).toHaveBeenCalledTimes(1);
+    increaseUpdateViewSpy.mockRestore();
+  });
+
   it("clickCounter를 주입하지 않으면 에러를 던진다.", () => {
     const clickCounter = null;
     const updateEl = document.createElement("span");
     const clickCounterViewCallback = () => {
-      ClickCounterView(clickCounter, updateEl);
+      ClickCounterView(clickCounter, { updateEl });
     };
 
     expect(clickCounterViewCallback).toThrow();
@@ -58,7 +67,7 @@ describe("ClickCountView 모듈의", () => {
     const clickCounter = ClickCounter();
     const updateEl = null;
     const clickCounterViewCallback = () => {
-      ClickCounterView(clickCounter, updateEl);
+      ClickCounterView(clickCounter, { updateEl });
     };
 
     expect(clickCounterViewCallback).toThrow();
